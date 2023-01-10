@@ -15,6 +15,11 @@
  Title="About"
  ContentTemplate="{DataTemplate local:AboutPage}"
  />
-    </TabBar>
+        <ShellContent
+ Title="Lista servicii"
+ ContentTemplate="{DataTemplate local:ServiciiEntryPage}"
+ />
+    </TabBar>
+
 
 </Shell>

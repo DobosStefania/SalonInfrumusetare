@@ -9,6 +9,7 @@ public partial class ListPage : ContentPage
 	}
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
+        
         var slist = (Serviciu)BindingContext;
         await App.Database.SaveServiciuAsync(slist);
         await Navigation.PopAsync();

@@ -12,7 +12,7 @@ public partial class ServiciiEntryPage : ContentPage
         base.OnAppearing();
         listView.ItemsSource = await App.Database.GetServiciuAsync();
     }
-    async void OnShopListAddedClicked(object sender, EventArgs e)
+    async void OnListAddedClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ListPage
         {

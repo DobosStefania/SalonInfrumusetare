@@ -4,7 +4,7 @@
              x:Class="SalonInfrumusetare.ListPage"
              Title="ListPage">
     <StackLayout Margin="20">
-        <Editor Placeholder="Acestea sunt serviciile oferite de noi"
+        <Editor Placeholder="Aici puteti alege un serviciu de infrumusetare potrivit pentru dumneavoastra"
  Text="{Binding Description}"
  HeightRequest="100" />
         <Grid>
