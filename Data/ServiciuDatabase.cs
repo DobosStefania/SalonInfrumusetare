@@ -15,33 +15,56 @@ namespace SalonInfrumusetare.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Serviciu>().Wait();
+            _database.CreateTableAsync<TipServiciu>().Wait();
+            _database.CreateTableAsync<ListaServiciu>().Wait();
+        }
+        public Task<int> SaveServiciuAsync(Serviciu serviciu)
+        {
+            if (serviciu.ID != 0)
+            {
+                return _database.UpdateAsync(serviciu);
+            }
+            else
+            {
+                return _database.InsertAsync(serviciu);
+            }
+        }
+        public Task<int> DeleteServiciuAsync(Serviciu serviciu)
+        {
+            return _database.DeleteAsync(serviciu);
         }
         public Task<List<Serviciu>> GetServiciuAsync()
         {
             return _database.Table<Serviciu>().ToListAsync();
         }
-        public Task<Serviciu> GetServiciuAsync(int id)
+
+        internal Task SaveListaServiciuAsync(ListaServiciu ls)
         {
-            return _database.Table<Serviciu>()
-            .Where(i => i.ID == id)
-           .FirstOrDefaultAsync();
+            throw new NotImplementedException();
         }
-        public Task<int> SaveServiciuAsync(Serviciu slist)
+        public Task<int> SaveListaServiciutAsync(ListaServiciu listp)
         {
-            if (slist.ID != 0)
+            if (listp.ID != 0)
             {
-                return _database.UpdateAsync(slist);
+                return _database.UpdateAsync(listp);
             }
             else
             {
-                return _database.InsertAsync(slist);
+                return _database.InsertAsync(listp);
             }
         }
-        public Task<int> DeleteServiciuAsync(Serviciu slist)
+        public Task<List<ListaServiciu>> GetListaServiciuAsync(int shoplistid)
         {
-            return _database.DeleteAsync(slist);
+            return _database.QueryAsync<ListaServiciu>(
+            "select S.ID, S.Description from Serviciu P"
+            + " inner join ListaServiciu LS"
+            + " on S.ID = LS.ProductID where LS.ShopListID = ?",shoplistid);
         }
 
-
+        internal Task DeleteListaServiciuAsync(ListaServiciu slist)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

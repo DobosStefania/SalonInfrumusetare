@@ -20,5 +20,6 @@ namespace SalonInfrumusetare.Models
         [Range(1,300)]
         
         public decimal Price { get; set; }
+        public List<ListaServiciu> ListaServiciu { get; internal set; }
     }
 }
